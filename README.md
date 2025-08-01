@@ -42,7 +42,7 @@ Each row of the training data contains **1000 samples** and an associated class 
    - Repeat K-NN classification with reduced dimensions
    - Compare results with original data
 
-## 🧪 Results
+## Results
 
 - Best accuracy and model performance are analyzed for both original and PCA-reduced datasets.
 - The project discusses which approach gives the best results and why.
