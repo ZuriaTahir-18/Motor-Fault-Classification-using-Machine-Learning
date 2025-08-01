@@ -16,42 +16,42 @@ Each row of the training data contains **1000 samples** and an associated class 
 ## Project Tasks
 
 1. **Data Preprocessing**
-   - Combine multiple datasets
-   - Extract blocks of 1000 samples per row
-   - Label each row with motor condition (healthy/unhealthy/fault type)
+   Combine multiple datasets
+   Extract blocks of 1000 samples per row
+   Label each row with motor condition (healthy/unhealthy/fault type)
 
 2. **K-NN Model (from scratch)**
-   - Custom implementation of Euclidean distance
-   - Manual train-test split (Hold-out)
-   - 10-fold Cross Validation
+   Custom implementation of Euclidean distance
+   Manual train-test split (Hold-out)
+   10-fold Cross Validation
 
 3. **Evaluation Metrics**
-   - Accuracy
-   - Precision
-   - Recall
-   - Sensitivity
-   - Specificity
-   - F1 Score
+   Accuracy
+   Precision
+   Recall
+   Sensitivity
+   Specificity
+   F1 Score
 
 4. **Hyperparameter Tuning**
-   - Optimize `k` (number of neighbors)
-   - Plot accuracy vs. k for both test set and cross-validation
+   Optimize `k` (number of neighbors)
+   Plot accuracy vs. k for both test set and cross-validation
 
 5. **Dimensionality Reduction with PCA**
-   - Apply PCA to reduce the feature space
-   - Repeat K-NN classification with reduced dimensions
-   - Compare results with original data
+   Apply PCA to reduce the feature space
+   Repeat K-NN classification with reduced dimensions
+   Compare results with original data
 
 ## Results
 
-- Best accuracy and model performance are analyzed for both original and PCA-reduced datasets.
-- The project discusses which approach gives the best results and why.
+   Best accuracy and model performance are analyzed for both original and PCA-reduced datasets.
+   The project discusses which approach gives the best results and why.
 
 ## Tools and Libraries
 
-- Python
-- NumPy, Pandas, Matplotlib
-- Scikit-learn (only for PCA and metrics — KNN is implemented manually)
+   Python
+   NumPy, Pandas, Matplotlib
+   Scikit-learn (only for PCA and metrics — KNN is implemented manually)
 
 ## Files
 
