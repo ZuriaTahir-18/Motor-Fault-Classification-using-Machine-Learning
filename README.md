@@ -1,61 +1,64 @@
-# Motor Fault Detection using K-NN and PCA
+# Motor Fault Classification using Machine Learning
 
-This project implements a machine learning pipeline to detect faults in an induction motor using current signature data. The project uses the K-Nearest Neighbors (K-NN) algorithm implemented from scratch and applies Principal Component Analysis (PCA) to reduce dimensionality.
+This repository contains a set of machine learning experiments for classifying induction motor faults based on time-domain current signal data. Multiple ML models have been applied across different stages of binary and multiclass classification. The goal is to explore the effectiveness of various algorithms including K-NN, Logistic Regression, Naïve Bayes, and SVM on both raw and dimensionally reduced data.
+
 
 ## Dataset Description
 
-The dataset consists of time-domain three-phase current data acquired from an induction motor operating under various conditions:
+The dataset contains instantaneous values of three-phase current signature data collected from an induction motor operating under both healthy and unhealthy conditions. The motor was subjected to various mechanical faults such as inner-race and outer-race bearing faults with severity levels of 0.7mm to 1.7mm, and broken rotor bar (BRB) faults. These experiments were performed under different load conditions (100W, 200W, and 300W). 
 
-- **Faults**: Inner and outer race bearing faults (0.7mm to 1.7mm), Broken Rotor Bar (BRB)
-- **Loads**: 100W, 200W, 300W
-- **Sampling rate**: 10 kHz with 1000 samples per channel
-- **Classes**: 14 total (healthy, unhealthy, various fault types and severity levels)
+- A total of **39 datasets** were collected.
+- Each file contains more than **100,000 samples**.
+- Data was acquired at a **10 kHz sampling rate** using non-invasive current sensors.
+- Data is organized into **7 folders**, each representing different load levels.
+- This is a **14-class classification** problem including healthy and various unhealthy states.
 
-Each row of the training data contains **1000 samples** and an associated class label.
+## Project Overview
 
-##  Project Tasks
+The overall project aims to:
 
-1. **Data Preprocessing**
-   - Combine multiple datasets
-   - Extract blocks of 1000 samples per row
-   - Label each row with motor condition (healthy/unhealthy/fault type)
+- Preprocess high-frequency motor current signal data into structured labeled datasets.
+- Train and evaluate several machine learning models using both binary and multiclass labels.
+- Perform dimensionality reduction using PCA and analyze its effect on classification performance.
+- Visualize training and validation performance metrics to interpret model behavior.
 
-2. **K-NN Model (from scratch)**
-   - Custom implementation of Euclidean distance
-   - Manual train-test split (Hold-out)
-   - 10-fold Cross Validation
 
-3. **Evaluation Metrics**
-   - Accuracy
-   - Precision
-   - Recall
-   - Sensitivity
-   - Specificity
-   - F1 Score
 
-4. **Hyperparameter Tuning**
-   - Optimize `k` (number of neighbors)
-   - Plot accuracy vs. k for both test set and cross-validation
+## Notebooks & Tasks
 
-5. **Dimensionality Reduction with PCA**
-   - Apply PCA to reduce the feature space
-   - Repeat K-NN classification with reduced dimensions
-   - Compare results with original data
+### `motor_fault_knn_pca_classification.ipynb`
+- Data preprocessing: segmenting signal blocks and labeling (healthy/unhealthy).
+- Manual implementation of the **K-Nearest Neighbors (K-NN)** algorithm (no built-in ML libraries).
+- Evaluation using both **Hold-out** and **10-fold Cross Validation**.
+- Metrics: Accuracy, Recall, Precision, Sensitivity, Specificity, F1 Score.
+- **Hyperparameter tuning**: optimized value of K.
+- **PCA** applied for dimensionality reduction and the entire pipeline repeated.
+- Final comparison of K-NN performance on original vs PCA-transformed data.
 
-## Results
 
-- Best accuracy and model performance are analyzed for both original and PCA-reduced datasets.
-- The project discusses which approach gives the best results and why.
 
-## Tools and Libraries
+### `nb_svm_binary_multiclass_classification.ipynb`
+- Data preprocessing to prepare labeled data.
+- Applied **Logistic Regression** for:
+  - **Binary classification** (healthy vs unhealthy)
+  - **Multiclass classification** (14 motor conditions)
+- Classification metrics computed for both settings.
 
-- Python
-- NumPy, Pandas, Matplotlib
-- Scikit-learn (only for PCA and metrics — KNN is implemented manually)
+###  `logistic_regression_motor_fault_classification.ipynb`
+- Applied both **Naïve Bayes** and **Support Vector Machine (SVM)** for:
+  - Binary classification
+  - Multiclass classification
+- Evaluation using Accuracy, Precision, Recall, Sensitivity, Specificity, F1 Score.
+- **Training and Validation curves** plotted for both classifiers to visualize accuracy and loss.
 
-##  Files
 
-- `motor_fault_knn_pca_classification.ipynb`: Main Jupyter Notebook
-- `final_combined.csv`: Preprocessed dataset (not included due to size limits)
-- `README.md`: Project overview (this file)
+##  Requirements
 
+To run these notebooks smoothly, you need the following libraries installed:
+
+```bash
+numpy
+pandas
+matplotlib
+scikit-learn
+seaborn
